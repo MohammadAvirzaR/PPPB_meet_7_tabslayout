@@ -16,9 +16,11 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val sectionsPagerAdapter = SectionsPagerAdapter(this
-        )
+        val sectionsPagerAdapter = SectionsPagerAdapter(this)
         binding.viewPager.adapter = sectionsPagerAdapter
+        TabLayoutMediator(binding.tabLayout, binding.viewPager){
+            tab,position -> tab.text = tabTitles[position]
+        }.attach()
 
 
         with(binding){
